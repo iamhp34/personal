@@ -42,7 +42,6 @@
       border: none;
       border-radius: 25px;
       cursor: pointer;
-      transition: 0.2s;
     }
 
     #yes {
@@ -64,13 +63,19 @@
   <div class="card">
     <h1>Hey Love ❤️</h1>
     <p>Will you be my Valentine?</p>
-    <button id="yes">Yes 💕</button>
-    <button id="no">No 🙃</button>
+    <button id="yes">Yes 😍</button>
+    <button id="no">No 😈</button>
   </div>
+
+  <!-- SOUND EFFECTS -->
+  <audio id="fartSound" src="https://www.soundjay.com/human/fart-01.mp3"></audio>
+  <audio id="swagSound" src="https://www.soundjay.com/button/sounds/button-10.mp3"></audio>
 
   <script>
     const noBtn = document.getElementById("no");
     const yesBtn = document.getElementById("yes");
+    const fartSound = document.getElementById("fartSound");
+    const swagSound = document.getElementById("swagSound");
 
     function moveNoButton() {
       const x = Math.random() * (window.innerWidth - 120);
@@ -79,27 +84,58 @@
       noBtn.style.top = y + "px";
     }
 
-    // Run away on hover AND click
+    // NO button runs away
     noBtn.addEventListener("mouseover", moveNoButton);
-    noBtn.addEventListener("mousedown", moveNoButton);
 
-    yesBtn.addEventListener("click", () => {
+    // If she clicks NO
+    noBtn.addEventListener("click", () => {
+      fartSound.play();
+
       document.body.innerHTML = `
         <div style="
           display:flex;
           justify-content:center;
           align-items:center;
           height:100vh;
-          background:linear-gradient(135deg,#ff758c,#ff7eb3);
+          background:#000;
           color:white;
-          font-family:'Segoe UI',sans-serif;
           text-align:center;
         ">
           <div>
-            <h1>YAYYYYY 💖💖💖</h1>
+            <h1>💨 FART MODE ACTIVATED 💨</h1>
+            <img 
+              src="https://i.imgur.com/3ZQ3ZQp.jpg"
+              alt="Dog farting"
+              style="width:300px;border-radius:20px;">
+            <p style="font-size:22px;">That choice STINKS 😆</p>
+          </div>
+        </div>
+      `;
+    });
+
+    // YES clicked
+    yesBtn.addEventListener("click", () => {
+      swagSound.play();
+
+      document.body.innerHTML = `
+        <div style="
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          height:100vh;
+          background:linear-gradient(135deg,#1d3557,#457b9d);
+          color:white;
+          text-align:center;
+        ">
+          <div>
+            <h1>😎 SWAG DOG APPROVES 😎</h1>
+            <img 
+              src="https://i.imgur.com/6XK4R9X.jpg"
+              alt="Swag Dog"
+              style="width:300px;border-radius:20px;">
             <p style="font-size:26px;">
               Love you baby ❤️<br>
-              Forever my Valentine 🌹
+              Best Valentine decision EVER 💍
             </p>
           </div>
         </div>
